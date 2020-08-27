@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from accounts.models import Signup
 from .models import Request,Orders
-from pages.models import Books,Electronics,Stationery,Sports,Others
+from pages.models import Books,Electronics,Stationery,Sports,Others,Favourites
 from forms.models import Sellform
 from pages.views import favourite_list
 from django.http import HttpResponse
@@ -10,7 +10,7 @@ from django.contrib import messages
 from passlib.hash import django_pbkdf2_sha256 as handler
 # Create your views here.
 def index(request):
-    sell=Sellform.objects.all()[:10]
+    sell=Sellform.objects.all()[::-1][:10]
     return render(request,"index.html",{'sell':sell})
 def profile(request):
     sign1=Signup.objects.all()
@@ -93,7 +93,7 @@ def requests(request,my_id,bool):
         if bool=='Accept':
             r2=Request.objects.get(id=my_id)
             Orders.objects.create(seller_username=r2.seller_username,buyer_username=r2.buyer_username,img=r2.img,price=r2.price,product_title=r2.product_title,category=r2.category)
-            s1=Sellform.objects.get(username=r2.seller_username,img=r2.img,product_title=r2.product_title,price=r2.price)
+            s2=Sellform.objects.get(username=r2.seller_username,img=r2.img,product_title=r2.product_title,price=r2.price)
             if r2.category=='Books':
                 b1=Books.objects.get(username=r2.seller_username,img=r2.img,product_title=r2.product_title,price=r2.price)
                 b1.delete()
@@ -109,15 +109,29 @@ def requests(request,my_id,bool):
             else:
                 o1=Others.objects.get(username=r2.seller_username,img=r2.img,product_title=r2.product_title,price=r2.price)
                 o1.delete()
-            s1.delete()
+            f1=Favourites.objects.all()
+            for f in f1:
+                if f.username ==r2.seller_username and f.product_title== r2.product_title:
+                    f.delete()
+            s2.delete()
             r2.delete()
             r1=Request.objects.all()
-            return render(request,"requests.html",{'r1':r1})
+            request_seller_list=[]
+            request_buyer_list=[]
+            for r in r1:
+                request_seller_list.append(r.seller_username)
+                request_buyer_list.append(r.buyer_username)
+            return render(request,"requests.html",{'r1':r1,'request_seller_list':request_seller_list,'request_buyer_list':request_buyer_list})
         elif bool=='Decline':
             r2=Request.objects.get(id=my_id)
             r2.delete()
             r1=Request.objects.all()
-            return render(request,"requests.html",{'r1':r1})
+            request_seller_list=[]
+            request_buyer_list=[]
+            for r in r1:
+                request_seller_list.append(r.seller_username)
+                request_buyer_list.append(r.buyer_username)
+            return render(request,"requests.html",{'r1':r1,'request_seller_list':request_seller_list,'request_buyer_list':request_buyer_list})
         else:
             r1=Request.objects.all()
             request_seller_list=[]

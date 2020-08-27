@@ -11,10 +11,10 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title  -->
-    <title>Buy and Sell</title>
+    <title>Connect</title>
 
     <!-- Title logo -->
-    <link rel="icon" href="{% static 'img/core-img/favicon.ico' %}">
+    <link rel="icon" href="{% static 'img/core-img/connectlogo.png' %}">
 
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="{% static 'css/core-style.css' %}">
@@ -33,7 +33,7 @@
             <!-- Classy Menu -->
             <nav class="classy-navbar" id="essenceNav">
                 <!-- Logo -->
-                <a class="nav-brand" href="{% url 'index' %}"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
+                <a class="nav-brand" href="{% url 'index' %}"><img src="{% static 'img/core-img/connect.png' %}" style="width:130px;" alt=""></a>
                 <!-- Navbar Toggler -->
                 <div class="classy-navbar-toggler">
                     <span class="navbarToggler"><span></span><span></span><span></span></span>
@@ -86,12 +86,12 @@
                 {% endfor %}
                 {% endif %}-->
                 <!-- Search Area -->
-                <div class="search-area">
+               <!-- <div class="search-area">
                     <form action="#" method="post">
                         <input type="search" name="search" id="headerSearch" placeholder="Type for search">
                         <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </form>
-                </div>
+                </div>-->
                 <!-- Favourite Area -->
                 {% if user.is_authenticated %}
                 <div class="favourite-area">
@@ -104,16 +104,19 @@
                 {% endif %}
                 <!-- User Login Info -->
                 {% if user.is_authenticated %}
-                <div class="user-login-info classynav">
+                <div class="user-login-info">
                     <div class="dropdown">
                         <a href="#"><i class="fa fa-user mt-md-4" aria-hidden="true" style="font-size: 22px;"></i></a>
                             <div class="dropdown-content" style="width:100px;">
-                                <a href="{% url 'profile' %}" class="mental" style="line-height:2; text-align:left; color:#787878">My Profile</a>
-                                <a href="{% url 'requests' my_id=1 bool='x' %}" style="line-height:2; text-align:left; color:#787878;">Requests</a>
-                                <a href="{% url 'orders' %}" style="line-height:2; text-align:left; color:#787878;">My Orders</a>
-                                <a href="{% url 'sold' %}" style="line-height:2; text-align:left; color:#787878;">Items Sold</a>
-                                <a href="#" style="line-height:2; text-align:left; color:#787878;">Chat</a>
-                                <a href="{% url 'logout' %}" style="line-height:2; text-align:left; color:#787878;">Logout</a>
+                                <a href="{% url 'profile' %}" class="mental" style="line-height:2; text-align:left; color:#787878; border-left:none;">My Profile</a>
+                                <hr style="margin-top:2px; margin-bottom:2px;">
+                                <a href="{% url 'requests' my_id=1 bool='x' %}" style="line-height:2; text-align:left; color:#787878; border-left:none;">Requests</a>
+                                <hr style="margin-top:2px; margin-bottom:2px;">
+                                <a href="{% url 'orders' %}" style="line-height:2; text-align:left; color:#787878; border-left:none;">Orders</a>
+                                <hr style="margin-top:2px; margin-bottom:2px;">
+                                <a href="{% url 'sold' %}" style="line-height:2; text-align:left; color:#787878; border-left:none;">Items Sold</a>
+                                <hr style="margin-top:2px; margin-bottom:2px;">
+                                <a href="{% url 'logout' %}" style="line-height:2; text-align:left; color:#787878; border-left:none;">Logout</a>
                             </div>
                     </div>
                 </div>
@@ -131,21 +134,7 @@
     <!--##### Welcome Area Start #####--> 
     <div class="row">
         <div class="col-12">
-            <section class="welcome_area bg-img background-overlay img-fluid img-thumbnail" style="background-image: url({% static 'img/bg-img/handstem.jpg' %}); background-size : 100% 100%; background-repeat:no-repeat; background-position:center center; ">
-                <div class="container h-100">
-                    <div class="row h-100 align-items-center">
-                        <div class="col-12">
-                            <div class="hero-content">
-            
-                                <h2>BUY THE ITEMS<br> YOU LOVE....</h2>
-                            </div>
-                            <div class="hero-content1">
-                                <h2>SELL QUICKLY<br>AND EASILY</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <section class="welcome_area bg-img background-overlay img-fluid img-thumbnail" style="background-image: url({% static 'img/bg-img/hands.png' %}); background-size : 100% 100%; background-repeat:no-repeat; background-position:center center; "></section>
 
         </div>
     </div>
@@ -234,13 +223,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="cta-content bg-img background-overlay" style="background-image: url({% static 'img/bg-img/sell3.png' %}); opacity:0.8">
-                        <div class="sell">
-                            <p style="font-size:45px;color:#e3e3d3; margin-left:65px;">Sell things <br>you don't <br> need</p>
-                            <p style="text-align:end; font-size:45px; color:#e3e3d3; margin-right:55px;">Someone <br>who needs <br>will buy it</p>
-                        </div>
+                    <div class="cta-content bg-img background-overlay" style="background-image: url({% static 'img/bg-img/sell4.jpeg' %}); background-size : 100% 100%; background-repeat:no-repeat; background-position:center center; opacity:0.8;">
                         <div class="h-100 d-flex align-items-center justify-content-center">
-                            <div class="cta--text ml-5" style="margin-bottom: 1200px;">
+                            <div class="cta--text ml-5" style="margin-bottom: 50px;">
                                 {% if user.is_authenticated %}
                                 <a href="{% url 'sellform' %}" class="btn active px-lg-5 justify-content-center sell-btn" style="margin-left:35px;">Sell Now</a>
                                 {% else %}
@@ -261,7 +246,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="section-heading text-center">
-                            <h2>Popular Products</h2>
+                            <h2>Latest Products</h2>
                         </div>
                     </div>
                 </div>
@@ -286,20 +271,6 @@
                                         <img src="{{s.img.url}}" alt="" style="height:300px; width:500px;opacity:0.8;">
                                     </a>
                                     {% endif %}
-                                 <!-- Favourite -->
-                                 <div class="product-favourite">
-                                    <form class="cart-form clearfix" method="POST" action="{% url 'favourites' direct='x' %}">
-                                        {% csrf_token %}
-                                       <input type="text" name="pt" value="{{s.product_title}}" style="display: none;"/>
-                                       <input type="text" name="sid" value="{{s.username}}" style="display: none;"/>
-                                       <input type="text" name="price" value="{{s.price}}" style="display: none;"/>
-                                       <input type="text" name="description" value="{{s.description}}" style="display: none;"/>
-                                       <input type='text' name="fid" value="{{user.username}}" style="display: none;"/>
-                                       <input type="text" name="cat" value="{{s.category}}" style="display: none;"/>
-                                        <a href="#" type="submit" class="favme fa fa-heart"></a>
-                                        </form>
-                                    </div>
-                                   
                                 </div>
                                 <!-- Product Description -->
                                 <div class="product-description" style="font-family: 'Ubuntu', sans-serif;">
@@ -337,7 +308,7 @@
                     <div class="single_widget_area d-flex mb-30">
                         <!-- Logo -->
                         <div class="footer-logo mr-50">
-                            <a href="#"><img src="{% static 'img/core-img/logo2.png' %}" alt=""></a>
+                            <a href="#"><img src="{% static 'img/core-img/connect.png' %}" alt="" style="width:130px;"></a>
                         </div>
                     </div>
                 </div>
@@ -345,7 +316,7 @@
                 <div class="col-12 col-md-6">
                     <div class="single_widget_area mb-30">
                         <ul class="footer_widget_menu">
-                            <li><a href="#">Order Status</a></li>
+                            <li><a href="{% url 'event' %}">Events</a></li>
                             <li><a href="#">FAQ's</a></li>
                             <li><a href="{% url 'about' %}">About</a></li>
                             <li><a href="#">Help</a></li>
@@ -396,7 +367,7 @@
     <!-- Active js -->
     <script src="{% static 'js/active.js' %}"></script>
 <!-- GetButton.io widget -->
-<script type="text/javascript">
+<!--<script type="text/javascript">
     (function () {
         var options = {
             whatsapp: "+91-", // WhatsApp number
@@ -408,7 +379,7 @@
         s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
         var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
     })();
-</script>
+</script>-->
 <!-- /GetButton.io widget -->
 
 </body>

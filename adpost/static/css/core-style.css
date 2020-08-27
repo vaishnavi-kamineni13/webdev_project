@@ -333,6 +333,9 @@ img {
     .header_area .classynav ul li .megamenu li a:hover,
     .header_area .classynav ul li .dropdown li a:hover {
       color: #000000; }
+    .mental:hover{
+      color:black;
+    }
 
 
 
@@ -423,6 +426,11 @@ img {
         @media only screen and (min-width: 576px) and (max-width: 767px) {
           .header_area .search-area form input:focus {
             width: 300px; } }
+            @media only screen and (min-width:0px) and (max-width:567px){
+              .header_area .user-login-info a{
+                margin-top:0px;
+              }
+            }
     .header_area .search-area form button {
       position: absolute;
       z-index: 10;

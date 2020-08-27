@@ -11,10 +11,10 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title  -->
-    <title>Buy and Sell</title>
+    <title>Product Details</title>
 
     <!-- Title logo -->
-    <link rel="icon" href="{% static 'img/core-img/favicon.ico' %}">
+    <link rel="icon" href="{% static 'img/core-img/connectlogo.png' %}">
 
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="{% static 'css/core-style.css' %}">
@@ -33,7 +33,7 @@
             <!-- Classy Menu -->
             <nav class="classy-navbar" id="essenceNav">
                 <!-- Logo -->
-                <a class="nav-brand" href="{% url 'index' %}"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
+                <a class="nav-brand" href="{% url 'index' %}"><img src="{% static 'img/core-img/connect.png' %}" style="width:130px;" alt=""></a>
                 <!-- Navbar Toggler -->
                 <div class="classy-navbar-toggler">
                     <span class="navbarToggler"><span></span><span></span><span></span></span>
@@ -86,12 +86,12 @@
                 {% endfor %}
                 {% endif %}-->
                 <!-- Search Area -->
-                <div class="search-area">
+                <!--<div class="search-area">
                     <form action="#" method="post">
                         <input type="search" name="search" id="headerSearch" placeholder="Type for search">
                         <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </form>
-                </div>
+                </div>-->
                 <!-- Favourite Area -->
                 {% if user.is_authenticated %}
                 <div class="favourite-area">
@@ -104,16 +104,19 @@
                 {% endif %}
                 <!-- User Login Info -->
                 {% if user.is_authenticated %}
-                <div class="user-login-info classynav">
+                <div class="user-login-info">
                     <div class="dropdown">
                         <a href="#"><i class="fa fa-user mt-md-4" aria-hidden="true" style="font-size: 22px;"></i></a>
                             <div class="dropdown-content" style="width:100px;">
-                                <a href="{% url 'profile' %}" class="mental" style="line-height:2; text-align:left; color:#787878">My Profile</a>
-                                <a href="{% url 'requests' my_id=1 bool='x' %}" style="line-height:2; text-align:left; color:#787878;">Requests</a>
-                                <a href="{% url 'orders' %}" style="line-height:2; text-align:left; color:#787878;">My Orders</a>
-                                <a href="{% url 'sold' %}" style="line-height:2; text-align:left; color:#787878;">Items Sold</a>
-                                <a href="#" style="line-height:2; text-align:left; color:#787878;">Chat</a>
-                                <a href="{% url 'logout' %}" style="line-height:2; text-align:left; color:#787878;">Logout</a>
+                                <a href="{% url 'profile' %}" class="mental" style="line-height:2; text-align:left; color:#787878; border-left:none;">Profile</a>
+                                <hr style="margin-top:2px; margin-bottom:2px;">
+                                <a href="{% url 'requests' my_id=1 bool='x' %}" style="line-height:2; text-align:left; color:#787878; border-left:none;">Requests</a>
+                                <hr style="margin-top:2px; margin-bottom:2px;">
+                                <a href="{% url 'orders' %}" style="line-height:2; text-align:left; color:#787878; border-left:none;">Orders</a>
+                                <hr style="margin-top:2px; margin-bottom:2px;">
+                                <a href="{% url 'sold' %}" style="line-height:2; text-align:left; color:#787878; border-left:none;">Items Sold</a>
+                                <hr style="margin-top:2px; margin-bottom:2px;">
+                                <a href="{% url 'logout' %}" style="line-height:2; text-align:left; color:#787878; border-left:none;">Logout</a>
                             </div>
                     </div>
                 </div>
@@ -161,9 +164,9 @@
                    <input type="text" name="cat" value="Others" style="display: none;"/>
                    {% if x.username in fav_seller_username_list and x.product_title in fav_pt_list %}
                     <button type="submit" name="addtofav" class="btn btn-outline-danger active" style="font-family: 'Roboto', sans-serif; font-weight:bold" id="fav">Add To My Favourites</button>
-                   {%else %}
+                   {% else %}
                    <button type="submit" name="addtofav" class="btn btn-outline-danger" style="font-family: 'Roboto', sans-serif; font-weight:bold" id="fav">Add To My Favourites</button>
-                   {%endif %}
+                   {% endif %}
 
                     {% else %}
                     <a href="{% url 'login' %}" type="" name="addtofav" value="5" class="btn btn-outline-danger" style="font-family: 'Roboto', sans-serif; font-weight:bold">Add To My Favourites</a>
@@ -202,7 +205,7 @@
                     <div class="single_widget_area d-flex mb-30">
                         <!-- Logo -->
                         <div class="footer-logo mr-50">
-                            <a href="#"><img src="{% static 'img/core-img/logo2.png' %}" alt=""></a>
+                            <a href="#"><img src="{% static 'img/core-img/connect.png' %}" alt="" style="width:130px;"></a>
                         </div>
                     </div>
                 </div>
@@ -210,7 +213,7 @@
                 <div class="col-12 col-md-6">
                     <div class="single_widget_area mb-30">
                         <ul class="footer_widget_menu">
-                            <li><a href="#">Order Status</a></li>
+                            <li><a href="{% url 'event' %}">Events</a></li>
                             <li><a href="#">FAQ's</a></li>
                             <li><a href="{% url 'about' %}">About</a></li>
                             <li><a href="#">Help</a></li>

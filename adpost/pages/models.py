@@ -10,7 +10,6 @@ class Books(models.Model):
     description=models.TextField()
     price=models.CharField(max_length=10)
     img=models.ImageField(upload_to='pics')
-    favourite=models.ManyToManyField(User,related_name='favourite',blank=True)
 class Electronics(models.Model):
     username=models.CharField(max_length=10)
     email = models.EmailField(max_length=254)

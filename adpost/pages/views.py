@@ -89,8 +89,8 @@ def favourites(request,direct):
             o1=Others.objects.get(product_title=pt,price=price)
             img=o1.img
         if Favourites.objects.filter(username=sid,favourite_username=fid,img=img,price=price,product_title=pt,category=cat,description=description).exists():
-                f1=Favourites.objects.get(username=sid,favourite_username=fid,img=img,price=price,product_title=pt,category=cat,description=description)
-                f1.delete()
+            f1=Favourites.objects.get(username=sid,favourite_username=fid,img=img,price=price,product_title=pt,category=cat,description=description)
+            f1.delete()
         else:
             Favourites.objects.create(username=sid,favourite_username=fid,img=img,price=price,product_title=pt,category=cat,description=description)
         if direct=='favpage':
@@ -110,7 +110,7 @@ def favourites(request,direct):
                     return redirect('electronics',my_username=fid)
                 else:
                     e1=Electronics.objects.get(username=sid,img=img)
-                    return redirect('electronics_product_details',my_id=e1.id,username=fid)
+                    return redirect('electronics_product_details',my_id=e1.id,my_username=fid)
             elif cat=='Sports' :
                 if direct=='x':
                     return redirect('sports',my_username=fid)
@@ -122,13 +122,13 @@ def favourites(request,direct):
                     return redirect('stationery',my_username=fid)
                 else:
                     s1=Stationery.objects.get(username=sid,img=img)
-                    return redirect('stationery_product_details',my_id=s1.id,my_username=f.id)
-            else:
+                    return redirect('stationery_product_details',my_id=s1.id,my_username=fid)
+            elif cat=='Others':
                 if direct=='x':
                     return redirect('others',my_username=fid)
                 else:
                     o1=Others.objects.get(username=sid,img=img)
-                    return redirect('others_product_details',my_id=o1.id,my_username=o1.id)
+                    return redirect('others_product_details',my_id=o1.id,my_username=fid)
     else:
         f1=Favourites.objects.all()
         favourite_username_list=[]

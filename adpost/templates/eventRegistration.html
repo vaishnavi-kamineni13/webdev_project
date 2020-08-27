@@ -13,6 +13,8 @@
     <!-- Title Page-->
     <title>Event Registration Form</title>
 
+    <link rel="icon" href="{% static 'img/core-img/connectlogo.png' %}">
+
     <!-- Icons font CSS-->
     <link href="{% static 'vendor/mdi-font/css/material-design-iconic-font.min.css' %}" rel="stylesheet" media="all">
     <link href="{% static 'vendor/font-awesome-4.7/css/font-awesome.min.css' %}" rel="stylesheet" media="all">
@@ -44,7 +46,7 @@
                             <div class="name">Username</div>
                             <div class="value">
                                 <div class="input-group-desc">
-                                        <input class="input--style-5" type="text" name="username">
+                                        <input class="input--style-5" type="text" name="username" required>
                                 </div>
                             </div>
                         </div>
@@ -52,7 +54,7 @@
                             <div class="name">Event Name</div>
                             <div class="value">
                                 <div class="input-group-desc">
-                                        <input class="input--style-5" type="text" name="event_name" maxlength="55">
+                                        <input class="input--style-5" type="text" name="event_name" maxlength="55" required>
                                 </div>
                             </div>
                         </div>
@@ -62,7 +64,7 @@
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="start_date">
+                                            <input class="input--style-5" type="text" name="start_date" required>
                                             <label class="label--desc">Start Date</label>
                                         </div>
                                     </div>
@@ -87,15 +89,14 @@
                             <div class="name">Contact No</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="number">
+                                    <input class="input--style-5" type="text" name="number" required>
                                 </div>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="name">Event Description</div>
                             <div class="value">
-                                <textarea rows="3" cols="50" class="input--style-5" name="description" id="desc" style="border: none;">        
-                                </textarea>
+                                <textarea rows="3" cols="50" class="input--style-5" name="description" id="desc" style="border: none;" required></textarea>
                             </div>
                         </div>
                         <div class="form-row">
@@ -110,7 +111,7 @@
                             <div class="name">Event Images </div>
                             <div class="value">
                                 <div class="input-group" style="padding-left: 15px;">
-                                    <input type="file" id="img" name="img" accept="image/*" multiple>
+                                    <input type="file" id="img" name="img" accept="image/*" multiple required>
                                 </div>
                             </div>
                         </div>

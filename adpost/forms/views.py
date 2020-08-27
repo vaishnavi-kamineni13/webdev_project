@@ -17,7 +17,6 @@ def sellform(request):
         img=request.FILES['img']
         sell=Sellform.objects.create(username=username,email=email,category=category,product_title=product_title,description=description,price=price,img=img)
         general(sell)
-        messages.info(request,username)
         print('created')
         return redirect('/')
     else:

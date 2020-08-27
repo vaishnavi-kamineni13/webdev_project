@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sell Form</title>
+    <link rel="icon" href="{% static 'img/core-img/connectlogo.png' %}">
 
     <!-- Font Icon -->
     <link rel="stylesheet" href="{% static 'fonts/material-icon/css/material-design-iconic-font.min.css' %}">
@@ -29,15 +30,15 @@
                         {% csrf_token %}
                         <h2 class="form-title" style="text-transform:none; text-align:left; font-size:27px;">Have any products to sell?</h2>
                         <div class="form-group">
-                            <input readonly type="text" class="form-input" name="username" id="username" placeholder="Username" value="{{user.username}}"/>
+                            <input readonly type="text" class="form-input" name="username" id="username" placeholder="Username" value="{{user.username}}" required/>
                         </div>
                         <div class="form-group">
-                            <input readonly type="email" class="form-input" name="email" id="email" placeholder="Email" value="{{user.email}}"/>
+                            <input readonly type="email" class="form-input" name="email" id="email" placeholder="Email" value="{{user.email}}" required/>
                         </div>
                         <div class="form-group">
                            <!-- <label for="category">Choose Product Category:</label>-->
-                            <select id="category" name="category" class="form-input">
-                              <option value="choose" disabled selected hidden class="choose">Choose Product Category</option> 
+                            <select id="category" name="category" class="form-input" data-validate="Category required">
+                              <option value="choose" disabled selected hidden class="choose">Choose Product Category *</option> 
                               <option value="Books" name='Books'>Books</option>
                               <option value="Electronics" name='Electronics'>Electronic Gadgets</option>
                               <option value="Stationery" name='Stationery'>Stationery</option>
@@ -46,18 +47,17 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" name="product_title" id="name" placeholder="Product Title"/>
+                            <input type="text" class="form-input" name="product_title" id="name" placeholder="Product Title" required/>
                         </div>
                         <div class="form-group">
-                           <textarea rows="5" cols="40" class="form-input" name="description" id="desc" placeholder="Product Description">        
-                           </textarea>
+                           <textarea rows="5" cols="40" class="form-input" name="description" id="desc" placeholder="Product Description" required></textarea>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" name="price" id="price" placeholder="Product Price"/>
+                            <input type="text" class="form-input" name="price" id="price" placeholder="Product Price" required/>
                         </div>
                         <div class="form-group">
                             <label for="img" style="font-weight: 600; margin-left:10px; margin-top:20px;">Product Images : </label>
-                            <input type="file" id="img" name="img" accept="image/*" style="margin-top: 20px;" multiple>
+                            <input type="file" id="img" name="img" accept="image/*" style="margin-top: 20px;" multiple required>
                         </div>
 
                         <div class="form-group">
