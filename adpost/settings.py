@@ -33,7 +33,6 @@ ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1','webdev-project12.herokuapp
 # Application definition
 
 INSTALLED_APPS = [
-    'whitenoise.runserver_nostatic',
     'pages.apps.PagesConfig',
     'forms.apps.FormsConfig',
     'accounts.apps.AccountsConfig',
@@ -47,7 +46,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
