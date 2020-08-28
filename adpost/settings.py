@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -21,9 +22,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '(5(+82udpidl$$-mvfv7_xg_!md3#ptufuk(sa9i+7gu)vi!ka'
+SECRET_KEY = os.environ.get('SECRET_KEY')
+EMAIL_HOST_USER = os.environ.get('vaishnavikamineni@gmail.com')
+EMAIL_HOST_PASSWORD = os.environ.get('Lyv@91012')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1','webdev-project12.herokuapp.com']
 
@@ -31,6 +36,7 @@ ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1','webdev-project12.herokuapp
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'pages.apps.PagesConfig',
     'forms.apps.FormsConfig',
     'accounts.apps.AccountsConfig',
@@ -44,6 +50,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -86,7 +93,8 @@ DATABASES = {
         'HOST':'localhost'
     }
 }
-
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -123,6 +131,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS=[
