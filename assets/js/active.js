@@ -113,6 +113,13 @@
         });
     });
 
+
+    var b= $(".container .row .col-lg-4 .card .card-body .card-title .atmf");
+
+    b.on('click',function(){
+        console.log('clicked');
+    });
+
     // favourite button active code in pages
     // :: Favorite Button Active Code
     var fav=$(".fav");
@@ -147,6 +154,9 @@
     if ($.fn.niceScroll) {
         $(".cart-list, .cart-content").niceScroll();
     }
+
+    
+
 
     // :: wow Active Code
     if ($window.width() > 767) {

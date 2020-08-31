@@ -333,6 +333,59 @@ img {
     .header_area .classynav ul li .megamenu li a:hover,
     .header_area .classynav ul li .dropdown li a:hover {
       color: #000000; }
+    .mental:hover{
+      color:black;
+    }
+
+
+
+
+
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        padding: 12px 16px;
+        z-index: 1;
+        right:0;
+      }
+      
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+      .classynav .dropdown:hover .dropdown-content .mental{
+        color:blue;
+      }
+
+
+
+
+     /* .dropdown .dropdown-content .dropdown{
+        position: relative;
+        display: inline-block;
+      }
+      
+      .dropdown .dropdown-content .dropdown .dropdown-content1{
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        padding: 12px 16px;
+        z-index: 1;
+      }
+      
+      .dropdown .dropdown-content .dropdown:hover .dropdown-content1 {
+        display: block;
+      }
+      */
   .header_area .search-area form {
     position: relative;
     z-index: 1;
@@ -373,6 +426,11 @@ img {
         @media only screen and (min-width: 576px) and (max-width: 767px) {
           .header_area .search-area form input:focus {
             width: 300px; } }
+            @media only screen and (min-width:0px) and (max-width:567px){
+              .header_area .user-login-info a{
+                margin-top:0px;
+              }
+            }
     .header_area .search-area form button {
       position: absolute;
       z-index: 10;
@@ -670,7 +728,7 @@ img {
   z-index: 1;
   width: 100%;
   height: 600px; 
-}
+ }
   @media only screen and (min-width: 768px) and (max-width: 991px) {
     .welcome_area {
       height: 450px; } }
@@ -929,9 +987,73 @@ img {
       opacity: 1;
       visibility: visible; }
 
-  
 
 
+      .card .cardbody .fav-btn {
+        display:flex;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      
+      @keyframes favme-anime {
+        0%   { 
+          opacity: 1;
+          font-size: ms(0);
+          -webkit-text-stroke-color: transparent;
+        }
+        25%	 { 
+          opacity:.6;
+          color: #FFF;
+          font-size: ms(-2);
+          -webkit-text-stroke-width: 1px;
+           -webkit-text-stroke-color: #DC3232;
+        }
+        75%	 { 
+          opacity:.6;
+          color: #FFF;
+          font-size: ms(3);
+          -webkit-text-stroke-width: 1px;
+           -webkit-text-stroke-color: #DC3232;
+        }
+        100% { 
+          opacity: 1;
+          font-size: ms(2);
+          -webkit-text-stroke-color: transparent;
+        }
+      }
+      
+      @keyframes favme-hover {
+        from {
+          font-size: ms(3);
+        }
+        80% {
+          font-size: ms(2);
+        }
+      }
+      
+      .card .cardbody .fav-btn .favme {
+        display:block;
+        font-size: ms(2);
+        width: auto;
+        height: auto;
+        cursor: pointer;
+        box-shadow: none;
+        transition: all .2s ease;
+        color: #CBCDCE;
+        margin: 0;
+      }
+        
+      .card .cardbody .fav-btn .favme.active {
+          color: #DC3232;
+        }
+      .card .cardbody .fav-btn .favme:hover {
+        animation: favme-hover .3s infinite alternate;
+      }
+      .card .cardbody .fav-btn .favme.is_animating {
+        animation: favme-anime .3s;
+      }
   
 
 @keyframes favme-anime {
