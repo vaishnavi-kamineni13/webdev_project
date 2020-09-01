@@ -1,1 +1,1 @@
-web: gunicorn <adpost>.wsgi --log-file -
+web: gunicorn adpost.wsgi:application --log-file -
